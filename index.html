@@ -104,6 +104,7 @@
       color: var(--mint);
       font-size: 1.2rem;
       line-height: 1;
+      animation: mark-glow 3.6s ease-in-out infinite;
     }
 
     .nav {
@@ -299,6 +300,7 @@
       background: linear-gradient(110deg, transparent 42%, rgba(255,255,255,0.055) 50%, transparent 58%);
       content: "";
       transform: rotate(-12deg);
+      animation: card-shimmer 7s ease-in-out infinite;
       pointer-events: none;
     }
 
@@ -309,6 +311,7 @@
       height: 420px;
       object-fit: contain;
       filter: drop-shadow(0 24px 35px rgba(0,0,0,0.5));
+      animation: skin-float 4.8s ease-in-out infinite;
     }
 
     .skin-tag {
@@ -339,8 +342,20 @@
       transform: rotate(45deg);
     }
 
-    .spark-one { top: 18%; right: 12%; }
-    .spark-two { bottom: 19%; left: 9%; width: 6px; height: 6px; background: var(--cyan); }
+    .spark-one {
+      top: 18%;
+      right: 12%;
+      animation: spark-drift 4s ease-in-out infinite;
+    }
+
+    .spark-two {
+      bottom: 19%;
+      left: 9%;
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      animation: spark-drift 4.8s 900ms ease-in-out infinite reverse;
+    }
 
     .social-section {
       padding-block: 40px 100px;
@@ -398,6 +413,11 @@
       background: linear-gradient(135deg, rgba(20, 30, 31, 0.96), rgba(15, 21, 22, 0.86));
       text-decoration: none;
       transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+      animation: rise-in 750ms both;
+    }
+
+    .social-card:first-child { animation-delay: 180ms; }
+    .social-card:last-child { animation-delay: 320ms; }
     }
 
     .social-card::after {
@@ -435,9 +455,15 @@
       border-radius: 18px;
       background: rgba(255,255,255,0.06);
       color: var(--icon-color, var(--mint));
+      transition: transform 220ms ease, background 220ms ease;
     }
 
     .social-icon svg { width: 26px; height: 26px; }
+
+    .social-card:hover .social-icon {
+      background: rgba(255,255,255,0.1);
+      transform: rotate(-7deg) scale(1.08);
+    }
 
     .social-copy {
       position: relative;
@@ -504,6 +530,26 @@
     @keyframes breathe {
       0%, 100% { transform: scale(0.96); opacity: 0.75; }
       50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    @keyframes skin-float {
+      0%, 100% { transform: translateY(0); filter: drop-shadow(0 24px 35px rgba(0,0,0,0.5)); }
+      50% { transform: translateY(-10px); filter: drop-shadow(0 34px 38px rgba(0,0,0,0.42)); }
+    }
+
+    @keyframes card-shimmer {
+      0%, 35% { transform: translateX(-8%) rotate(-12deg); opacity: 0.35; }
+      70%, 100% { transform: translateX(12%) rotate(-12deg); opacity: 0.8; }
+    }
+
+    @keyframes spark-drift {
+      0%, 100% { translate: 0 0; rotate: 0deg; opacity: 0.65; }
+      50% { translate: 0 -12px; rotate: 90deg; opacity: 1; }
+    }
+
+    @keyframes mark-glow {
+      0%, 100% { box-shadow: 0 0 0 rgba(119,242,194,0); }
+      50% { box-shadow: 0 0 24px rgba(119,242,194,0.2); }
     }
 
     @media (max-width: 760px) {
