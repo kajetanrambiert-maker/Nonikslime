@@ -415,11 +415,9 @@
       background: linear-gradient(135deg, rgba(20, 30, 31, 0.96), rgba(15, 21, 22, 0.86));
       text-decoration: none;
       transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
-      animation: rise-in 750ms both;
     }
 
-    .social-card:first-child { animation-delay: 180ms; }
-    .social-card:last-child { animation-delay: 320ms; }
+    .social-card:last-child { transition-delay: 90ms; }
 
     .reveal-item {
       opacity: 1;
@@ -733,6 +731,9 @@
       }, { threshold: 0.15 });
 
       revealItems.forEach((item) => revealObserver.observe(item));
+      window.setTimeout(() => {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }, 3500);
     } else {
       revealItems.forEach((item) => item.classList.add("is-visible"));
     }
