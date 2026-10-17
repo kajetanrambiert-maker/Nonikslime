@@ -3,317 +3,651 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nonikslime | Minecraft Skin</title>
+  <meta name="theme-color" content="#080b0d" />
+  <meta name="description" content="Oficjalna strona Nonikslime — Minecraft, skin oraz linki do YouTube i TikToka." />
+  <title>Nonikslime — Minecraft &amp; więcej</title>
   <style>
     :root {
-      --bg1: #196ec9;
-      --bg2: #000911;
-      --bg3: #1d5b92;
-      --panel: rgba(20, 40, 60, 0.82);
-      --line: rgba(255,255,255,0.2);
-      --text: #edf7ff;
-      --muted: #cfeaff;
-      --primary: #7bd1ff;
-      --primary-2: #39d0ff;
-      --gold: #ffd76a;
-      --dark: #071521;
+      color-scheme: dark;
+      --bg: #080b0d;
+      --surface: #101619;
+      --surface-raised: #151e20;
+      --line: rgba(209, 255, 242, 0.12);
+      --text: #f0f8f5;
+      --muted: #9aaba5;
+      --mint: #77f2c2;
+      --mint-dark: #39c995;
+      --cyan: #6ce8ec;
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
 
     body {
       margin: 0;
+      min-width: 320px;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+      overflow-x: hidden;
       background:
-        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.45)),
-        radial-gradient(circle at top, rgba(88, 174, 255, 0.35), transparent 35%),
-        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 40%, var(--bg3) 100%);
+        radial-gradient(ellipse at 76% 12%, rgba(37, 143, 116, 0.15), transparent 35rem),
+        radial-gradient(ellipse at 10% 65%, rgba(35, 125, 132, 0.1), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      content: "";
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      pointer-events: none;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 2px solid var(--mint);
+      outline-offset: 5px;
+    }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 5;
+      top: 14px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 28px;
-    }
-
-    .container {
-      width: min(1100px, 100%);
-      background: rgba(7, 21, 33, 0.6);
-      border: 2px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      backdrop-filter: blur(4px);
-    }
-
-    .topbar {
-      display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 18px 28px;
-      border-bottom: 2px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      width: min(1120px, calc(100% - 32px));
+      min-height: 70px;
+      margin: 14px auto 0;
+      padding: 10px 14px 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(13, 19, 20, 0.84);
+      backdrop-filter: blur(18px);
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 1.1rem;
-      color: var(--gold);
-      text-transform: uppercase;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-size: 0.96rem;
+      font-weight: 850;
+      letter-spacing: 0.045em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(119, 242, 194, 0.38);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(119,242,194,0.19), rgba(108,232,236,0.08));
+      color: var(--mint);
+      font-size: 1.2rem;
+      line-height: 1;
     }
 
     .nav {
       display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
     }
 
     .nav a {
-      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 11px;
       color: var(--muted);
-      font-weight: 700;
       font-size: 0.9rem;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: 0.2s ease;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color 180ms ease, background 180ms ease;
     }
 
     .nav a:hover {
-      background: rgba(255,255,255,0.08);
-      color: white;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
     }
 
-    a:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
+    .nav .nav-cta {
+      margin-left: 7px;
+      background: var(--mint);
+      color: #062017;
     }
+
+    .nav .nav-cta:hover { background: #9bffd7; }
 
     .hero {
+      position: relative;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
-      padding: 42px 28px 30px;
+      grid-template-columns: 1.04fr 0.96fr;
       align-items: center;
+      gap: clamp(30px, 6vw, 76px);
+      min-height: 680px;
+      padding-block: 72px 82px;
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(123, 209, 255, 0.12);
-      border: 1px solid rgba(123, 209, 255, 0.35);
-      color: var(--primary);
-      font-size: 0.82rem;
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      animation: rise-in 700ms both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      color: var(--mint);
+      font-size: 0.77rem;
       font-weight: 800;
-      letter-spacing: 1px;
+      letter-spacing: 0.17em;
       text-transform: uppercase;
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      content: "";
     }
 
     h1 {
+      max-width: 690px;
       margin: 0;
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      line-height: 0.96;
-      letter-spacing: -2px;
+      font-size: clamp(3.4rem, 7.2vw, 6.4rem);
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.98;
     }
 
-    .accent {
-      color: var(--primary);
-      text-shadow: 0 0 20px rgba(123,209,255,0.5);
+    .name-accent {
+      display: block;
+      background: linear-gradient(100deg, var(--mint) 15%, var(--cyan) 90%);
+      background-clip: text;
+      color: transparent;
+      -webkit-background-clip: text;
     }
 
-    .subtitle {
-      margin-top: 18px;
-      font-size: 1.08rem;
-      line-height: 1.7;
+    .hero-description {
+      max-width: 480px;
+      margin: 25px 0 0;
       color: var(--muted);
-      max-width: 650px;
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+      line-height: 1.85;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 26px;
+      gap: 12px;
+      margin-top: 32px;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-weight: 800;
-      padding: 14px 22px;
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 19px;
+      border: 1px solid transparent;
       border-radius: 14px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      border: 2px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
+    .button:hover { transform: translateY(-3px); }
+
+    .button-primary {
+      background: var(--mint);
+      box-shadow: 0 10px 34px rgba(57, 201, 149, 0.18);
+      color: #062017;
     }
 
-    .btn-primary {
-      background: linear-gradient(180deg, var(--primary), var(--primary-2));
-      color: var(--dark);
-      box-shadow: 0 10px 20px rgba(57,208,255,0.35);
+    .button-primary:hover {
+      background: #9bffd7;
+      box-shadow: 0 14px 38px rgba(57, 201, 149, 0.28);
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: white;
-      border-color: rgba(255,255,255,0.18);
+    .button-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.035);
+      color: var(--text);
     }
 
-    .skin-box {
-      background: rgba(255,255,255,0.04);
-      border: 2px solid var(--line);
-      border-radius: 24px;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: inset 0 0 20px rgba(255,255,255,0.04);
+    .button-secondary:hover {
+      border-color: rgba(119, 242, 194, 0.48);
+      background: rgba(119, 242, 194, 0.07);
     }
 
-    .skin-frame {
-      width: min(100%, 420px);
-      aspect-ratio: 1 / 1;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      border-radius: 22px;
-      border: 3px solid rgba(255,255,255,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
+    .arrow { font-size: 1.1rem; }
+
+    .hero-art {
+      position: relative;
+      display: grid;
+      min-height: 490px;
+      place-items: center;
+      animation: rise-in 850ms 120ms both;
+    }
+
+    .art-glow {
+      position: absolute;
+      width: min(90%, 410px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 207, 157, 0.19), rgba(49, 156, 149, 0.08) 42%, transparent 72%);
+      filter: blur(8px);
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .art-ring {
+      position: absolute;
+      width: min(88%, 390px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(119, 242, 194, 0.16);
+      border-radius: 50%;
+      box-shadow: 0 0 80px rgba(31, 198, 148, 0.06), inset 0 0 70px rgba(31, 198, 148, 0.04);
+    }
+
+    .skin-card {
+      position: relative;
+      display: grid;
+      width: min(78%, 340px);
+      min-height: 420px;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(193, 255, 232, 0.18);
+      border-radius: 34px;
+      background: linear-gradient(145deg, rgba(28, 45, 43, 0.92), rgba(13, 19, 20, 0.76) 62%);
+      box-shadow: 0 28px 90px rgba(0,0,0,0.48), inset 0 1px rgba(255,255,255,0.07);
+      transform: rotate(2deg);
+      transition: transform 350ms ease, border-color 350ms ease;
+    }
+
+    .skin-card:hover {
+      border-color: rgba(119, 242, 194, 0.42);
+      transform: rotate(0deg) translateY(-5px);
+    }
+
+    .skin-card::before {
+      position: absolute;
+      top: -30%;
+      left: -50%;
+      width: 200%;
+      height: 80%;
+      background: linear-gradient(110deg, transparent 42%, rgba(255,255,255,0.055) 50%, transparent 58%);
+      content: "";
+      transform: rotate(-12deg);
+      pointer-events: none;
     }
 
     .skin-image {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      height: 100%;
-      display: block;
+      height: 420px;
       object-fit: contain;
-      filter: drop-shadow(0 18px 20px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 24px 35px rgba(0,0,0,0.5));
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(120px, 1fr));
-      gap: 16px;
-      padding: 0 28px 28px;
+    .skin-tag {
+      position: absolute;
+      z-index: 2;
+      right: 18px;
+      bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(8, 13, 14, 0.78);
+      color: #c9d7d2;
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
     }
 
-    .stats-heading {
-      grid-column: 1 / -1;
-      margin: 0 0 4px;
-      text-align: center;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+    .spark {
+      position: absolute;
+      z-index: 2;
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      background: var(--mint);
+      box-shadow: 0 0 22px rgba(119, 242, 194, 0.8);
+      transform: rotate(45deg);
     }
 
-    .stat {
-      display: block;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px 16px;
-      text-align: center;
+    .spark-one { top: 18%; right: 12%; }
+    .spark-two { bottom: 19%; left: 9%; width: 6px; height: 6px; background: var(--cyan); }
+
+    .social-section {
+      padding-block: 40px 100px;
+      border-top: 1px solid var(--line);
     }
 
-    .stat-link {
-      color: inherit;
-      text-decoration: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 25px;
     }
 
-    .stat-link:hover {
-      border-color: var(--primary);
-      background: rgba(123, 209, 255, 0.08);
-    }
-
-    .stat-number {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 0.85rem;
-      letter-spacing: 0.8px;
+    .section-kicker {
+      margin: 0 0 7px;
+      color: var(--mint);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    @media (max-width: 820px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .actions {
-        justify-content: center;
-      }
-
-      .topbar {
-        flex-direction: column;
-        gap: 12px;
-      }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: -0.055em;
+      line-height: 1.1;
     }
 
-    @media (max-width: 560px) {
-      body { padding: 14px; }
-      .topbar, .hero, .stats { padding-left: 18px; padding-right: 18px; }
-      .stats { grid-template-columns: 1fr; }
-      .nav { justify-content: center; }
+    .section-note {
+      max-width: 300px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .social-card {
+      position: relative;
+      display: flex;
+      min-height: 174px;
+      align-items: center;
+      gap: 20px;
+      overflow: hidden;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(20, 30, 31, 0.96), rgba(15, 21, 22, 0.86));
+      text-decoration: none;
+      transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+    }
+
+    .social-card::after {
+      position: absolute;
+      right: -55px;
+      bottom: -100px;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: var(--card-glow, rgba(119,242,194,0.12));
+      content: "";
+      filter: blur(36px);
+      transition: opacity 200ms ease;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .social-card:hover {
+      border-color: rgba(119, 242, 194, 0.42);
+      background: linear-gradient(135deg, rgba(24, 39, 38, 0.98), rgba(15, 22, 23, 0.94));
+      transform: translateY(-4px);
+    }
+
+    .social-card:hover::after { opacity: 0.95; }
+
+    .social-icon {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 58px;
+      height: 58px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      color: var(--icon-color, var(--mint));
+    }
+
+    .social-icon svg { width: 26px; height: 26px; }
+
+    .social-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+    }
+
+    .social-copy strong {
+      display: block;
+      font-size: 1.22rem;
+      letter-spacing: -0.025em;
+    }
+
+    .social-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .social-arrow {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 1.35rem;
+      transition: color 200ms ease, transform 200ms ease;
+    }
+
+    .social-card:hover .social-arrow {
+      color: var(--mint);
+      transform: translate(3px, -3px);
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 22px 30px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-top {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-top:hover { color: var(--mint); }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(0.96); opacity: 0.75; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell { width: min(100% - 36px, 560px); }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        min-height: auto;
+        padding-block: 76px 64px;
+      }
+
+      .hero-copy { text-align: center; }
+      .eyebrow { justify-content: center; }
+      h1 { margin-inline: auto; font-size: clamp(3.4rem, 14vw, 5.6rem); }
+      .hero-description { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-art { min-height: 440px; }
+      .skin-card { width: min(72%, 300px); min-height: 380px; }
+      .skin-image { height: 380px; }
+      .social-section { padding-bottom: 72px; }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        top: 8px;
+        width: calc(100% - 20px);
+        min-height: 62px;
+        margin-top: 8px;
+        padding: 8px 9px 8px 12px;
+      }
+
+      .brand { gap: 8px; font-size: 0.82rem; }
+      .brand-mark { width: 34px; border-radius: 10px; }
+      .nav { gap: 0; }
+      .nav a { padding: 8px 9px; font-size: 0.79rem; }
+      .nav .nav-cta { margin-left: 3px; }
+      .hero { padding-top: 66px; }
+      .hero-actions { gap: 9px; }
+      .button { min-height: 48px; padding-inline: 14px; font-size: 0.86rem; }
+      .hero-art { min-height: 390px; }
+      .skin-card { width: min(76%, 270px); min-height: 340px; border-radius: 27px; }
+      .skin-image { height: 340px; }
+      .social-section { padding-top: 30px; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .section-note { text-align: left; }
+      .social-grid { grid-template-columns: 1fr; gap: 12px; }
+      .social-card { min-height: 142px; padding: 19px; }
+      .social-icon { width: 52px; height: 52px; border-radius: 16px; }
+      .site-footer { align-items: start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="logo">Nonikslime</div>
-      <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#skin">Skin</a>
-        <a href="#about">O mnie</a>
-      </nav>
-    </div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Nonikslime — strona główna">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>NONIKSLIME</span>
+    </a>
+    <nav class="nav" aria-label="Menu główne">
+      <a href="#skin">Skin</a>
+      <a href="#socials">Sociale</a>
+      <a class="nav-cta" href="#socials">Znajdź mnie <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
 
-    <section class="hero" id="home">
-      <div>
-        <div class="badge">Minecraft Profile</div>
-        <h1>Siema, jestem <span class="accent">Nonikslime</span></h1>
-        <p class="subtitle">
-          Gram i tworzę w świecie Minecraft. Zobacz mój skin i znajdź mnie na YouTube oraz TikToku.
+  <main>
+    <section class="hero page-shell" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">Minecraft • Content creator</p>
+        <h1>Hej, jestem <span class="name-accent">Nonikslime</span></h1>
+        <p class="hero-description">
+          Tworzę i gram w świecie Minecraft. Zobacz mój skin i wpadnij na moje kanały — miło Cię widzieć!
         </p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="skin.png" target="_blank" rel="noopener noreferrer">Zobacz skin</a>
-          <a class="btn btn-secondary" href="#about">Poznaj mnie</a>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#socials">Odwiedź moje kanały <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="skin.png" target="_blank" rel="noopener noreferrer">Zobacz skin <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
 
-      <div class="skin-box" id="skin">
-        <div class="skin-frame">
-          <img class="skin-image" src="skin.png" alt="Skin Minecraft: czarna postać z turkusową twarzą">
+      <div class="hero-art" id="skin" aria-label="Podgląd skina Minecraft">
+        <div class="art-glow" aria-hidden="true"></div>
+        <div class="art-ring" aria-hidden="true"></div>
+        <span class="spark spark-one" aria-hidden="true"></span>
+        <span class="spark spark-two" aria-hidden="true"></span>
+        <div class="skin-card">
+          <img class="skin-image" src="skin.png" alt="Czarny skin Minecraft z turkusową twarzą i czerwonym okiem">
+          <span class="skin-tag">Mój skin</span>
         </div>
       </div>
     </section>
 
-    <section class="stats" id="about" aria-labelledby="socials-heading">
-      <h2 class="stats-heading" id="socials-heading">Znajdź mnie w sieci</h2>
-      <a class="stat stat-link" href="https://www.youtube.com/@Nonikslime" target="_blank" rel="noopener noreferrer">
-        <span class="stat-number">YouTube</span>
-        <span class="stat-label">@Nonikslime</span>
-      </a>
-      <a class="stat stat-link" href="https://www.tiktok.com/@Nonikslime" target="_blank" rel="noopener noreferrer">
-        <span class="stat-number">TikTok</span>
-        <span class="stat-label">@Nonikslime</span>
-      </a>
+    <section class="social-section page-shell" id="socials" aria-labelledby="social-heading">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Bądźmy w kontakcie</p>
+          <h2 id="social-heading">Znajdź mnie tutaj</h2>
+        </div>
+        <p class="section-note">Kliknij i wskocz na mój kanał. Do zobaczenia!</p>
+      </div>
+
+      <div class="social-grid">
+        <a class="social-card" href="https://www.youtube.com/@Nonikslime" target="_blank" rel="noopener noreferrer" style="--icon-color: #ff7777; --card-glow: rgba(255, 65, 65, 0.18);" aria-label="Otwórz kanał YouTube Nonikslime">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/>
+            </svg>
+          </span>
+          <span class="social-copy">
+            <strong>YouTube</strong>
+            <span>@Nonikslime</span>
+          </span>
+          <span class="social-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a class="social-card" href="https://www.tiktok.com/@Nonikslime" target="_blank" rel="noopener noreferrer" style="--icon-color: #78f4e8; --card-glow: rgba(52, 224, 206, 0.16);" aria-label="Otwórz TikToka Nonikslime">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.6 6.2a5.6 5.6 0 0 1-3.5-4.7V1h-4.2v15.1a3.1 3.1 0 1 1-2.2-3 3.2 3.2 0 0 1 1 .2V9a7.1 7.1 0 1 0 5.4 6.9V8.2a9.7 9.7 0 0 0 5.7 1.9V5.9a5.6 5.6 0 0 1-2.2.3Z"/>
+            </svg>
+          </span>
+          <span class="social-copy">
+            <strong>TikTok</strong>
+            <span>@Nonikslime</span>
+          </span>
+          <span class="social-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </section>
-  </div>
+  </main>
+
+  <footer class="site-footer page-shell">
+    <span class="footer-brand">NONIKSLIME</span>
+    <span>Minecraft, kreatywność i dobra zabawa.</span>
+    <a class="footer-top" href="#home">Do góry ↑</a>
+  </footer>
 </body>
 </html>
-</await page.getByRole('button', { name: 'Commit changes...' }).click({ force: true }); return (await page.locator('body').innerText()).slice(-1500);
