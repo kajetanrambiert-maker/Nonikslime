@@ -86,6 +86,11 @@
       color: white;
     }
 
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -199,6 +204,13 @@
       padding: 0 28px 28px;
     }
 
+    .stats-heading {
+      grid-column: 1 / -1;
+      margin: 0 0 4px;
+      text-align: center;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
     .stat {
       display: block;
       background: rgba(255,255,255,0.04);
@@ -274,7 +286,7 @@
         <div class="badge">Minecraft Profile</div>
         <h1>Siema, jestem <span class="accent">Nonikslime</span></h1>
         <p class="subtitle">
-          Tworzę, gram i bawę się w świecie Minecraft. To moja strona, na której możesz zobaczyć mój skin, poznać styl i wejść w mój świat gry.
+          Gram i tworzę w świecie Minecraft. Zobacz mój skin i znajdź mnie na YouTube oraz TikToku.
         </p>
 
         <div class="actions">
@@ -290,7 +302,8 @@
       </div>
     </section>
 
-    <div class="stats" id="about">
+    <section class="stats" id="about" aria-labelledby="socials-heading">
+      <h2 class="stats-heading" id="socials-heading">Znajdź mnie w sieci</h2>
       <a class="stat stat-link" href="https://www.youtube.com/@Nonikslime" target="_blank" rel="noopener noreferrer">
         <span class="stat-number">YouTube</span>
         <span class="stat-label">@Nonikslime</span>
@@ -299,7 +312,7 @@
         <span class="stat-number">TikTok</span>
         <span class="stat-label">@Nonikslime</span>
       </a>
-    </div>
+    </section>
   </div>
 </body>
 </html>
